@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        #image-container{
+            background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhASEhIWFRUVFRUVFRUVFhYVFRgVFRUXFxUXGBUYHiggGBolHRUVITEhJSkrLi4uGB8zODMtNygtLisBCgoKDg0OGxAQGyslHyUtLy0tLS0vLS0tLS0tMi0wLS0vLS4rLS0tLy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOcA2gMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAAAQIEBQYHA//EAEcQAAEDAQQFBwkGBAMJAAAAAAEAAhEDBBIhMQUTQVGRBhUiMmFx0RQWU2JygZKx8DRCUqGywQcjJeFzxPEkMzZjdIKTosL/xAAbAQEAAgMBAQAAAAAAAAAAAAAAAQMCBAUGB//EADcRAAIBAgMFBQcCBgMAAAAAAAABAgMRBBIxIUFRYZEFExRxgRUiobHB0vAykiNCYoLR8TNScv/aAAwDAQACEQMRAD8A2iIpW4eRChQrAICEQogClFVASgQIUARFIQBQVCkIAiFEAQKQFVASUQKSgIKIgQBChUBASilQgCIApQEIisxu/IZoSKY27PrxR757tyOcqoL7giIhBCzBZmjA55ZgY4YARjmM4WGskWrsx3zhhGJHuG3YoZnG28+NRkGOHccQqqXuJMn6hVUmO8lQisxsmEBLWype/YMlVztgyVUHJBSiIQQsilQEAu29sCJjEwduyFjr7UrRAAImMiDBzndvxQyja+0i0UrsRkf7bRngQZ7V8l9KlQujsyA4fIDgvmhDtfYSoUoAhAAlfRzowGagmMNu/wAF80J0ClIRCAiIgChSiAKckVUBJUIu/o8mLKWtJpnEA9d+0d6xlJR1NjD4ade+S2zjz9GcFKqvQvNSyeiPxv8AFT5q2T0R+J/ise9RsezK/GPV/aeeKSvQvNWyeiPxP8VHmpZPRH43+Kd6h7Mr8Y9X9p56pleg+atk9Efif4p5qWT0R+N/ineoezK/GPV/aeeovQvNWyeiPxP8U81bJ6I/E/xTvUPZlbjHq/tPPioXoXmpZPRH43+Keatk9Efif4p3qHsyvxj1f2nn8qq9C81bJ6I/E/xTzVsnoj8T/FO9Q9mVuMer+089Ukr0HzVsnoj8T/FPNSyeiPxv8U71D2ZX4x6v7Tz1F6F5q2T0R+J/inmpZPRf+7/FO9Q9mV+Mer+089UhZumrM2nXqsYIa0gASTsBzKwirE7mjKOWTi9xMqERDEnJMFCIApRQEAQLK8lG0mccYEYZ7ZMbwFivbBIOxCXFrUh69YsvUZ7I+S8mK9ZsvUZ7I+Sprbjqdlaz9PqfZEUOVJ2SUUAKUAREQBFBKAoCUREAREQBFUBWQBERAeacpftVf2m/pC1i3Gn6F61VyThIGGZNwE54DDaVrK9G7iDh+fZlge8Lajojy9aL7yb/AKn8yihEWRSApUJKAICgUlAZLrSM4M44YQCZOe6STCxnukk71CkIZOTepR2S9ZsvUZ7I+S8mevWbL1GeyPkqa246fZWs/T6n1JQBSipOyEREAREQEEIApRAEREAVc1ZEAREQBERAed6frAWmu05TOHa0AiNy1VatOAGH+p/+is7lN9qr+039IWtC20tiPL15PvJrm/mAilQpKSFfVH6IVVN47yhKtvIREQglVX0o0y5waNuC2Vo0ThLM92/wVVSvCm1GT1/Npt0MDXrwlOnG6XV+S37P8a2NQ5etWbqM9kfJeTPOYXrFl6jPZHyUVtxtdk6z9PqfKvbaVOA+oxhOIDntaY3wSlO3UnBxbUY4NEuIc0hoxxJBwGB4FcD/ABB1Pl9i8p/3Or/mdbq3nfh6WcZLZWVtg8j0i6w5GhUbUP8ANzbSqFuFT2jlvWl3zzNbNnPaetfZ8VQhV9/3rbVH3VeVrOV9j9OB13llO5rNYy5+O8LucdaYzwX1p1Q4BzSCCJBBkEbwRmvOGf8ADzu//NhdvyY+x2P/AAKX6App1czStuT6leKwKoQlLNe1SUP27/XgZYtTC8sD23xiW3heAwzbntHFZK4fRZ/rlt/wG/ooLuFnCea/JtdCjFYfuHFJ3zRjL9yvb0MepaWNc1rntDndVpcAT3A5qr7ZTDgw1GBxyaXAOM5QJlcdywP9S0V7Q/WFrOWejH17e8U3ObUZZhUZdzc5jiYB2GCY7QFXOs1ey0dvhc28P2fCpkzzyqUXK9tLSceOm/kej2i0MYJe9rRMS4hondJX3XmXKnTXlWiqVX74rMZVA2PDHXiOwgg9xXpizhUU3s0sn1NfEYOVCnFz/U5Si1wy5f8AJhc7Wf09L/yM8VZukKJaXiqy6MC6+26DuJmAV55yu5NWWjaNHsp0rratUtqC883m3qTSJJJGDnZRmtryx0TRsujbQ2gy40vpucA5xk32iekTsAVXezWa6WznyubXgcNLuVCcv4jsrxSss2V397XetTs9c27fvC7F69Iu3YmZyiMZVfK6dzWaxlz8V4Xc460xngvPjy4svkHk8VNZ5LqeqLt/U3OteynaomOTxPb/AJsJ4hfy8LmS7HqLL3t43qRgrrVO/vfDQ75mk6BIDa1MkmAA9pJO4CVmrzHkhW0W59ka2i/ykBkvJfGsDQXHr5Xgdkdi9OVlKo5q+z0NPG4VYepktL+5WvzW13XP4HmvKX7VX9ofpC1hWy5TH/aq/tN/SFWw6OLxLsG7I2+C3Z1I04ZpHkY4epiMRKFNXd36bdWa5Ssq32TVuAmQRIn85WIsoTU4qS0ZRWpTpTdOas0SiAIsioJKI1soC1Aw4EbF01KqHNBG3HtWFYbC0Na44kjs24nvWcWhcjGVoTdo7t57DsbBVaEHKb/VZ2+T87buu1WPlWszH9ZsmF2tAQ1vcPkuMNOMsOzYfcussNqY9ounEASNo9yxwstYt+SNvF00rTS273bpf4nM8oNFVKukbDUFMupMbDzgWjF8SD3hbzS1jmzWplJgDn0qrQAAJc6mQMu0raqsLaVNK/MqniZS7v8AoVl6Nvb1ODboauNCus+rdrfR4Xp8oDt8ZYr76C0rbqdOz0HaPcAxtOmXmoMhDS67G7GJXbBSsFRs002rK27d6GxPtB1IyjUhF5puf8ys5Wva0lw2XuefW2nbKGk7TaaVkdWY+mxjYNyehSk3sciwjJdXoG3VqzHurWc0CHQGlwdIgGcAO5bZFlGnlbab27thVXxarQjGUFdJRze9e0VZbM1vgcfyl0bVqW7R1VjCWU3dMiIHTBx4LJ8hqc5itcOr8nuF+F29OW9dLmrJ3SvfncLGSyKFlsg4b9G78dTyvlhyVtIrVPJabn0qxbUc1sQ2o0uOU4dYke3GxephSiQpKDbW8nE42piKcITt7t9u96Lb6JI5Dllo6rVtGjXU2Oc2nWLqhEQBfpZz2NdwWfy3sDq9kqUmCXF1Mgey9pP5BdAoIR0083MiOMnHumkv4buv3ZtvqaJ1kfzaaF2X+R6u7tLtRdiO/BaDmevzKbPqna30eF77SH746uOa7wBSolST6WMqWOnTtZL9an6q9l5bfPmcZyd0nbWts1nqWB7WtbTpOqmoIDWgNvXAOzKV2aL51qzWCXEAdqyhHIrN3Ka9VVZ5owUb8L7X6t/DYcnpKzM11V10SXZ+4bFU4L6W59+o92wnAeK+AaNw4Lm1JNybbOhRpxhBKKtxtsu/zeaDSFcvedwwA/usVdHarG2pngdjvrNc/VpwYOxdfC1oTgoxVrbvzmeO7UwdajVdSbzKT1+lt3JacCqKFK2jlhfey0S911uE5+5Y6y9G17jh24fXvhYVHJQbjqX4aNOVaKqO0W1fy+fm0byky61rdyvClVLuw/XcvPN3d2fQoxUUorRbOhBJ7+7PgrU6mOBgj3Efuovjejmg5hQZG80XpJznCm/GZh23ATjwW5XPcngA9wiTEgkyRkCPzXQrpYdtwu3c5OJio1LJWOI5eVquv0dSp1n0tdUcxxpvc3AvpDYRJEmJWHpp1q0YadcWl9ooufdqMrEuIwJwJJjBroIiCBMr6/xHtLaVo0XVd1WVnOdGJutfRcYG3AFYfKHSR0rqrNZKbyzWh1Sq4XWtgFvABzjjBMACVr1Gs87P3tlv9HfwtOXc0HKK7pqWdtK1s0t+qfCzvpYzOXlteLRYGMtD6LKpIe9lR1MBpczpGCBkTmtjozRoeysynpOpWLgwXm1Q91OHXpBDjdvAEdolaT+Iuqp2jR2sbepNkPEXpphzLwjb0QV0PJC3WCoaosVO5F2/0Cyc4zz2qxWdaSdvrpuNeeen2fTnBS0bvlTjdTdszavf4PYrWZzVn0faXaQqWTy+03WU797WOkmGGIvR9/8AJdHynthsVgd/Me590Um1HEl5c6ZdemQ4NvOn1VgWIf120/8ATt/TSWLy2FS12yzWOi4NLAarnEXg15Ei83sa1uH/ADAsf0QlbVtpF0062IoxqWyKEaktiWiu27K+3T1MnkdaLRStNayWmo95NOnWpue4u+6NY0XiTm6P+wr61rXU54p0tY7Vmje1d51ybjsbsxOA2LR6bslrsVoslstFcV4e2mS1gaQ3pFzYAxlpqx2ra1CDpykQZBoYd1x6mLslDhJdHoJUozlKsrSzUZXaWzNFJOyaT4PTVn30BbajtKW+m6o8sY3osLnFgxp5NJgZnLesn+IturUbJeoEtc57WFzcw0tcTB+7iAJ7Vzln05RseldIPrF11wui60uM9A5DuK6S1crbI6z61zXVKLqhouBpgibgcbzTm2CFMZxcJRzWd38ymthqsMRSqqk5Ry092xuyuuF+t2fPk5ouXU69LSFWvTg32lxcHOLdrSegZMwRPauuXlugTROkqTtHB4o3Sa4hwYJBkY4xN2AduS9SVlBpxduPmvQ0+1KcoVVmbd4p2aUZJXeySW/nwtyNfpS2mkGwJLpichEeK5+vaC43nunv/ZbzTsasSJJMA7sDj+S51tMDHbvOJ4rWxMnntfYMJGOS9tpN4nIe84flmgb2/shcNpS99f6rWNsstFpKxlhvTIdxEreBazTVbBrN+PgtvBSkqqUd+vkcjtqnSlhXKeq/T5vd5Na8tu41QSFVSu0eLCytGuAqNLu2OCxF9rK0F4DsicVhUScGnpZl2Hk41oONr5la+l7rX80OlUqxpn+0ieC+V0bl50+iklU1Q3R3SPkp1Y+iVenZS7qh57i4oDbcnjBe2Nk3tueU+9b1YlioBjB0QCQL0b4xxWUSurRg4wSZx601ObkgRKBApVhUVLZUgQpRAVgZpAzUypQWIhRdCsiArdG78kuhWRBYoxgGAAA7BCuqgyrIDX6afFI4AyQMdnb+S5jVDbJ7yflkuzqUw4EOEg7CuXt9hc17ui4NkxBddjZiFpYqDvmN/BzVnExw0DIR3KVDaM7/AHuMfmUNKNn7rTN3kStTpx4lg+8JnsW1habTbRfBGZGP7fXYtrBJOsvX5HK7abWDla21pO/nu53Xze41ylElds8UQjTiFKkoDc0dJ3QZIc3E575MEZ7QPcoqaRLiS3LitKpb9StKtg4z2xdn8PzyfodrCdtVaKyzjmXnZ9dt/J9TZVLQ85uPy+S9FsvUZ7LfkvKnVXfQHgvVrL1Gey35KunhnRvd6/Q6S7ShjNkYtZePP/R9VXNSQpVpkEREAREQFSpClEAREQBVlWRAEREAREQHEaUqkV6oDoN8nOM2j3SP3WLUt5G0HeT79u3AgT2LG5RvItVbE9ZuwH7oWsc4u/sAPkqXgZSd8ys/zy6lMu3YQvFU22tmuzZsvp8PibStpUxDQJ35x3rVuJJJJk71KhblGhCkrR67zhYzG1cVLNU3aJaL84v5bCEUhfXWns/PxVxqq28+SIgQgIUlEBUr1qzdRnsj5LyZy9XszhcZiOqNvYqau463ZX6p+n1PuirfG8cUvjeOKpOxZlkVb43jil8bxxQWZZFW+N44pfG8cUFmWRVvjeOKXxvHFBZlkVb43jil8bxxQWZZFW+N44pfG8cUFmWRVvjeOKXxvHFBZlkVb43jil8bxxQWZ5vyl+1V/aH6QtWtnyk+1V/ab+kLWLbWiPLVv+Wf/p/MlEhFJUERIQBEQBAS1qs4R3qZjLNfJCdAouBWRCGk9SsDcrtoEiQ0kdiqtkRMERdwx3NgYA/dI6XalyYU4s1gal3sX1rmXE9098CfzXzS5i4LgRcUwNyIgyrgRcCuaQGfuVgIxOeweKo4oMsVuKlqXFKIMq4CBuUspE5NnuxULNoCWAATnIicZzLduGSNmUacW9DCNOMCOJUFqyLW4YbxnGMYDDjeXxS5DhFOxW4puoiEZVwJhXazaTgqsbtOXz7lLnShkipKIiEEqERAFYOifqFVEJBUhIUFCAUREBJCqpSEACFEQBWYYxVUQkglSERCCSoREBICqpRAQrFQiAKQoRAS90+CgIpQkKEQIQAERJQEKQsLQ7LRaAXC41oN2S2o4l0Tdaxgc5xAxMCAM1jaRtFpo1NW4MJiW3A4hwkiRtza4EEAgtIIEK5UJN5bq/mZunNRzW2G2lFpKtvtDXOaWCQXB3RJgtMOxBjDaVRuk68iGSSLwFx2Ld43jtU+Gny6mNmjfItHSt9oeS1rLxEyAxxIgEkEb4a7DsKeXWjDoA4TAaSR0i3EA9Ey04GDgnh58uoszeJK0A0rW6PRHS6vRPSMxhjjjuUjSdfDoZkgdB2JGY71Php8gb1FoHaXrDMAbcWkYHLMpzzV9XgfFPCz5A36Ln+eavq8D4qeeavq8D4p4afIG/Rc/wA81fV4HxTnmr6vA+KeGnyB0CLnzpmr6vA+Kc81fV4HxTw0+QOgRaDnmr6vA+Kjnmr6vA+KeGnyB0CLn+eavq8D4odM1fV4HxTw0+QOgRc/zzV9XgfFTzzV9XgfFPDT5A36LnxpernDfhPirc6V/wAI+ByeGny6ixv1C0XOtf8ACPhPZ29o4hU53q7m7+qcst6eGnyB0CmFz3PFXAw3HLA4xntTnmr6vA+KeFqcgZug9NMp0n0KtMubeL5bdMzqy5jmuIDmk0mHP7sEEEhfO28onPqtq6sBrWOphpc4yx14GXth16HZiMRO0oi3e5hdvky3v6llG/D5/ToS3lNVvOcWtN5j2EAvb13ue4ggyMXkdwG0AozlRWBYQAC2BMv2GiSB0ui06lnRGHSdgiKO5hwJ8RV/7Mpz/UvMddGdQu6TxfLqYpOJIdIMAwRBkkq9HlNWp5Brc+reGb6j4wOQNR0dwRFLowtoFXq65mSOUdSaZLGnUh4aA5zR/MF1xABwdEiR35r7DlhVDboaBm2b9Qu6Wsu4uccf5z5dmcJOCIrPC03uK/GVlo/zT5Gt0zpZ9qeHPABAeMycHVXvOJ3XyB2ALARFjFJKyJlNzd5PaERFJiEREAREQBERAEREAREQH3s9uqMY5jXQ1/WEAzgRmRIwJHvWTT07aAZFSD7LfxOdu3vcfepRYuEeBmpyWjZSrpqu4gl+IiOi0RDmuGQ3tbwVaOlqzIuuybdxa12EztGKImSOlkO8nfV9S1r0vWqNLHuBaYwDWDKIxAn7o4LBRFKiloRKTb2u5//Z');
+            height:800px;
+            padding:100px;
+
+        }
+        #form-container{
+            background-color: bisque;
+            height:240px;
+            padding:30px;
+            text-align: center;
+            margin-top: 10px;
+            width: 400px;
+            margin-left: 300px;
+           
+
+        }
+        h1{
+            font-size: 28px;
+        }
+        
+        label{
+            color:brown;
+            font-size:larger;
+
+        }
+
+    </style>
+    <script>
+        function validate ()
+        {
+        let  FirstName =document.getElementById("fname").value;
+        let password=document.getElementById("password").value;
+        let confirmpassword=document.getElementById("cnfpwd").value;
+         if (FirstName ==="" || FirstName===" " || FirstName===null || FirstName===undefined)
+         
+         {
+            document.getElementById("fname").style.borderColor="red";
+            alert ("please Enter First Name");
+        }
+         else if (password==="" || password===" " || password===null ||password===undefined)
+        {
+            document.getElementById("password").style.borderColor="red";
+            alert("Please Enter Password")
+        }
+        else if(confirmpassword==="" || confirmpassword===" " || confirmpassword===null)
+        {
+            document.getElementById("cnfpwd").style.borderColor="red";
+           alert("Please confirm password");
+        }
+        else if (confirmpassword!==password) 
+        {
+            alert("Password does not match")
+        }
+        
+        else {
+                alert("Sucess");
+
+            }
+        }
+        </script>
+   
+    
+</head>
+<body>
+   <div id="image-container">
+    <form id="form-container">
+
+        <h1>Please Enter your details below</h1>
+        <label for="First Name"  >First Name</label>
+        <input type="text"  id="fname" placeholder="Enter First Name" name="First Name" ><br><br>
+        <label for="Last Name">Last Name</label>
+        <input type="text"  id="LastName" placeholder="Enter Last Name" name="Last Name"><br><br>
+        <label for="Password">Password</label>
+        <input type="password" id="password" placeholder="Enter password" name="password"><br><br>
+        <label for="Confirm Password">Confirm Password</label>
+        <input type="password" id="cnfpwd" placeholder="Confirm password" name="confirm password"><br><br>
+        <input type="button"  onclick=validate(); value="Submit">
+        
+    </form>
+</div>
+
+
+</body>
+</html>
